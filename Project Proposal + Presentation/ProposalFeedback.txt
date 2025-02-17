@@ -1,0 +1,28 @@
+CMSI 4072 Spring 2025
+Project Proposal Feedback
+Project: PureDine
+=========================
+Proposal Document [2 points]:
+   Nice job on the document.  You hit all the required ideas.  I like the
+   choice of project ~ something that will help people in general but with
+   an eye to people that have specific limitations.  Very good idea.
+
+Proposal Presentation [3 points]:
+   Very nice-looking and well-crafted presentation, Aidan!  I like all your
+   graphics and the layout and color scheme is nice.
+
+   One thing to consider is, on slide two you have the description of the
+   project as the second bullet, and the components as the first bullet.  I
+   think it would be better to have the first bullet point actuall be moved
+   to the last bullet so the audience understands what you proposing and how
+   it will benefit them, THEN say what it is made of.
+
+   All the bullets could be a bit closer together, too, on all your slides.
+
+   Your questions slide is VERY cool!
+
+Summary:
+--------
+Total:  5% out of 5% for this deliverable.
+
+Nice job overall!  Great start to the semester.
