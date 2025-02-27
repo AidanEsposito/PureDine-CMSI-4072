@@ -1,10 +1,13 @@
 import puredinelogo from './Images/puredinelogo.png';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import About from './Webpages/About.js';
+// import { getResturants } from './Api.js';
+import About from './About.js';
 import './App.css';
 
 function App() {
+
+  // const navigate = useNavigate();
   return (
     <BrowserRouter>
       <div className="App">
