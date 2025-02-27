@@ -1,5 +1,61 @@
-.About-Text{
-    margin-left: auto;
-    margin-right: auto;
-    width: 8em
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: lightgrey;
+}
+
+.About-Text {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  text-align: center;
+}
+
+.About-Text h1, .About-Text h2 {
+  color: #007bff;
+}
+
+.About-Text p {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.6;
+}
+
+.About-Text img {
+  display: block;
+  margin: 20px auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.Back-Button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+  margin: 20px;
+  display: block;
+}
+
+.Back-Button:hover {
+  background-color: #0056b3;
+}
+
+@media screen and (max-width: 600px) {
+  .About-Text {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .Back-Button {
+    width: 80%;
+    margin: 20px auto;
+  }
 }

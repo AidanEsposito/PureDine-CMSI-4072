@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import './About.css';
 import Aidan from './Images/Aidan.jpeg';
 
 function About() {
@@ -10,7 +11,7 @@ function About() {
                 <button className="Back-Button" onClick={() => navigate("/")}>Back</button>
                 <div className="About-Text">
                     <h1>About</h1>
-                    <p>PureDine is a system made specifically for the Spring 2025 CMSI 4072 class at LMU.</p>
+                    <p>PureDine is a system made specifically for the Spring 2025 CMSI 4072 class at Loyola Marymount University.</p>
                     <p>The main lead of this project is Aidan Esposito, a senior student who aims to graduate in the Spring 2025 semester.</p>
                     <p>PureDine was made with to not only have a working project in the semester, but also to provide a close friend a resource to help their own allergies.</p>
                     <img src={Aidan} alt="Aidan Esposito" style={{width: 200, height: 200}} />
