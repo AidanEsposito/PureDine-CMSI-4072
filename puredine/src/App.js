@@ -1,26 +1,31 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route, Link, useLocation, useNavigate, } from 'react-router-dom';
-import { getRestaurants } from './Api.js';
+import React, { useState } from 'react';
+import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
+import Restaurants from './Restaurants.js';
 import About from './About.js';
 import puredinelogo from './Images/puredinelogo.png';
 import './App.css';
 
-
-// const handleSearch = async (event) => {
-//   navigate("/restaurant");
-// }
-
 function Home() {
+  const [searchInput, setSearchInput] = useState('');
+  const navigate = useNavigate();
+
+  const handleSearch = () => {
+    if (searchInput.trim()) {
+      navigate(`/restaurants?query=${encodeURIComponent(searchInput)}`);
+    }
+  };
+
   return (
     <main>
-      <input 
-        type="text" 
-        className="search-bar" 
-        placeholder="Enter Restaurant Name, Area, or Zip Code"
-        // onChange={(e) => setSearchInput(e.target.value)}
-        // onKeyDown={(e) => e.key === "Enter" && handleSearch()}
+      <input
+        type="text"
+        className="search-bar"
+        placeholder="Enter Restaurant Name, City, or Zip Code"
+        value={searchInput}
+        onChange={(e) => setSearchInput(e.target.value)}
+        onKeyDown={(e) => e.key === "Enter" && handleSearch()}
       />
-      <svg className="search-icon" viewBox="0 0 24 24" width="20" height="20">
+      <svg className="search-icon" viewBox="0 0 24 24" width="20" height="20" onClick={handleSearch}>
         <path fill="gray" d="M10,18a8,8 0 1,0 0,-16a8,8 0 1,0 0,16Zm6,-2l4,4" stroke="gray" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
       </svg>
     </main>
@@ -28,38 +33,37 @@ function Home() {
 }
 
 function Layout() {
-  const location = useLocation(); 
-
   return (
     <div className="App">
-      {location.pathname === "/" && (
-        <>
-          <header className="header">
-            <div className="logo-container">
-              <img src={puredinelogo} alt="PureDine Logo" className="logo" onClick={() => window.location.reload()} style={{ cursor: 'pointer' }} />
-            </div>
-            <nav className="nav-links">
-              <ul>
-                <li><Link to="/about">About</Link></li>
-                <li><button className="login-button">Login</button></li>
-              </ul>
-            </nav>
-          </header>
-          <Home /> 
-        </>
-      )}
-      
+      <header className="header">
+        <div className="logo-container">
+          <img 
+            src={puredinelogo} 
+            alt="PureDine Logo" 
+            className="logo" 
+            style={{ cursor: 'pointer' }} 
+            onClick={() => window.location.href = '/'} 
+          />
+        </div>
+        <nav className="nav-links">
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><button className="login-button">Login</button></li>
+          </ul>
+        </nav>
+      </header>
+
       <Routes>
+        <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="/restaurants" element={<Restaurants />} />
       </Routes>
     </div>
   );
 }
 
 function App() {
-
-  // const navigate = useNavigate();
-
   return (
     <BrowserRouter>
       <Layout />
@@ -68,3 +72,4 @@ function App() {
 }
 
 export default App;
+
