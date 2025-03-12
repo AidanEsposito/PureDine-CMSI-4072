@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { getResturants } from './Api.js';  
+import { getRestaurants } from './Api.js';  
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -18,7 +18,7 @@ function Restaurants() {
       try {
         setLoading(true);
         // Call the getResturants API to fetch restaurant data
-        const data = await getResturants(query);  
+        const data = await getRestaurants(query);  
         // Set the restaurant data in the state
         setRestaurants(data.results);
       } catch (error) {
