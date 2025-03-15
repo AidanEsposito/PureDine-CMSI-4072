@@ -1,0 +1,37 @@
+
+Evaluation and Feedback
+CMSI 4072 project ~ Spring 2025
+Evaluation for homework02
+===============================
+
+5-1 component-based vs service-oriented             5 of  5 points
+5-2 most appropriate architecture for tictactoe     5 of  5 points
+5-4 internet chess appropriate architecture         5 of  5 points
+5-6 database for ClassyDraw                         5 of  5 points
+5-8 state machine diagram for floats                9 of 10 points
+6-1 compare/contrast ClassyDraw subclasses         10 of 10 points
+6-2 inheritance diagram from 6-1                    8 of 10 points
+
+
+Total possible score: 50 points
+
+EVALUATION
+============================================================================
+Your score: 47 out of 50 = 94.0% which is an A
+
+Comments:
+---------
+
+problem 5-8 you need a stop state.  Also, what about fractional exponents?
+   For example, 2.34e-1.5 ...
+
+problem 6.2 you did a pretty good job here, but there are some things to
+   consider.  First, the 'subclass' drawing arrows should point to the
+   superclass, not to the subclass.  Second, you need a couple more classes
+   on the diagram ~ a 'Fillable' class which is for the shapes, and another
+   'LineDrawable' class for things that have a line but aren't fillable.
+   The 'Text' class should be by itself and a direct subclass of the
+   'Drawable' class at the top of the hierarchy.
+
+Excellent work ~ keep it up!
+
