@@ -1,0 +1,40 @@
+
+New Individual Project
+Documentation Feedback ~ Deliverable #3
+Software Design Document ~ Architecture
+CMSI 4072 Spring 2025
+=======================================
+
+SDD: ARCHITECTURAL DESIGN SECTION:
+   Major software components section
+      Excellent job on this section, nothing else needed.
+
+   Major software interactions section
+      Excellent job on this section, nothing else needed.
+
+OVERALL ASSESSMENT:
+   Category                           Points
+   --------------------------------   -------
+   ARCHITECTURAL DESIGN SECTION:
+   Major software components            2 / 2
+   Major software interactions          2 / 2
+   Architectural design diagrams        6 / 6
+                                      =======
+   Subtotal                            10 /10
+   ------------------------------------------------------
+   Total Percentage:  10/10 = 100% which is an A-plus
+
+============================================================================
+COMMENTS:
+---------
+Great job!
+
+Aidan, you have outdone yourself on the documentation this semester.  It's VERY
+very good ~ professional quality, well-thought-out, right amount of detail for
+the deliverable, clear diagrams that convey the intent and operation.
+
+I'm very impressed, sir!  I hope you have some idea of how far you have come
+during your time at LMU since we used to meet during office hours in 2120 class
+all those months ago ~ you should be very proud!
+
+Keep up the good work.
