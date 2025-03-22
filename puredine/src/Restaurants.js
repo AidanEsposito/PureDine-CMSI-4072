@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import './Restaurants.css';
 import { useLocation } from 'react-router-dom';
 import { getRestaurants } from './Api.js';  
 
@@ -43,6 +44,15 @@ function Restaurants() {
               <h3>{restaurant.name}</h3>
               <p>{restaurant.formatted_address}</p>
               <p>⭐ Rating: {restaurant.rating || "N/A"}</p>
+
+
+               {/* {restaurant.photos && restaurant.photos.length > 0 && (
+                <img
+                  src={getImageUrl(restaurant.photos[0].photo_reference, process.env.REACT_APP_GOOGLE_PLACES_API_KEY)}
+                  alt={restaurant.name}
+                  className="restaurant-image"
+                />
+              )} */}
             </li>
           ))}
         </ul>
