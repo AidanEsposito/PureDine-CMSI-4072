@@ -8,10 +8,12 @@ app.use(cors());
 app.use(express.json());
 
 
-const apiKey = process.env.GOOGLE_PLACES_API_KEY;
+const apiRestaurantKey = process.env.GOOGLE_PLACES_API_KEY;
+const apiHealthKey = process.env.EDAMAM_API_KEY;
 
 
-console.log('Google API Key:', apiKey); 
+console.log('Google API Key:', apiRestaurantKey); 
+console.log('Edamam API Key:', apiHealthKey);
 
 let fetch;
 
@@ -26,7 +28,7 @@ let fetch;
         const radius = req.query.radius || 1500; // Default radius 1500m
 
        
-        const url = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${encodeURIComponent(query)}&location=${location}&radius=${radius}&type=restaurant&key=${apiKey}`;
+        const url = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${encodeURIComponent(query)}&location=${location}&radius=${radius}&type=restaurant&key=${apiRestaurantKey}`;
 
         try {
             const response = await fetch(url);
@@ -50,6 +52,30 @@ let fetch;
         } catch (error) {
             console.error('Error fetching data:', error.message);
             res.status(500).json({ error: 'Failed to fetch data' });
+        }
+    });
+
+    app.get('/api/place-photo', async (req, res) => {
+        const { photoReference, maxwidth = 400 } = req.query;
+
+        if (!photoReference) {
+            return res.status(400).json({ error: 'photoReference is required' });
+        }
+
+        const url = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=${maxwidth}&photoreference=${photoReference}&key=${apiRestaurantKey}`;
+
+        try {
+            const response = await fetch(url);
+
+            if (!response.ok) {
+                throw new Error(`Google Photo API Error: ${response.statusText}`);
+            }
+
+            
+            response.body.pipe(res);
+        } catch (error) {
+            console.error('Error fetching photo:', error.message);
+            res.status(500).json({ error: 'Failed to fetch photo' });
         }
     });
 

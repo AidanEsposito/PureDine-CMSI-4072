@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
 import Restaurants from './Restaurants.js';
+import Menus from './Menus.js';
 import About from './About.js';
 import puredinelogo from './Images/puredinelogo.png';
 import './App.css';
@@ -58,6 +59,7 @@ function Layout() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/restaurants" element={<Restaurants />} />
+        <Route path="/menus" element={<Menus />} />
       </Routes>
     </div>
   );

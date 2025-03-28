@@ -9,12 +9,16 @@ const getRestaurants = async (query) => {
     return await response.json();
 };
 
-// const getMenus = async (placeId) => {
-//     //MenuME API
-//     const apiKey =
 
-//     const getAllergy = async (menuId) => {
-    //Edamam API
-    // const apiKey =
+    const getAllergy = async (menuId) => {
+        // const url = `http://localhost:5000/api/restaurants?query=${encodeURIComponent(query)}`;
 
-export { getRestaurants };
+        // const response = await fetch(url);
+        // if (!response.ok) {
+        //     throw new Error(`HTTP error! Status: ${response.status}`);
+        // }
+
+        // return await response.json();
+    };
+
+export { getRestaurants, getAllergy };
