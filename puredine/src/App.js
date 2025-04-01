@@ -1,10 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
 import Restaurants from './Restaurants.js';
 import Menus from './Menus.js';
 import About from './About.js';
 import puredinelogo from './Images/puredinelogo.png';
 import './App.css';
+import { signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth"
+import { auth } from "./firebaseConfig.js"
+
+// export function signIn(){
+//   return signInWithPopup(auth, new GoogleAuthProvider())
+// }
+
+// export function logOut(){
+//   return signOut(auth)
+// }
+
+// export function useAuthentication() {
+//   const [user, setUser] = useState(null)
+//   useEffect(() => {
+//     return auth.onAuthStateChanged((user) => {
+//       user ? setUser(user) : setUser(null)
+//     })
+//   }, [])
+//   return user
+// }
 
 function Home() {
   const [searchInput, setSearchInput] = useState('');

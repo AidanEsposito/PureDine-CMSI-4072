@@ -1,27 +1,55 @@
-import React, { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useState } from "react";
+import "./Menus.css";
+import { useLocation } from "react-router-dom";
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
 
-function Menus() {
-  const query = useQuery().get("restaurantId");
+function Menu() {
+  const query = useQuery();
+  const restaurantId = query.get("restaurantId"); 
+  const [selectedAllergies, setSelectedAllergies] = useState([]);
 
-  useEffect(() => {
-    if (query) {
-      console.log(`Navigated to Menus page with restaurantId: ${query}`);
-      // Add future menu-fetching logic here if needed
-    }
-  }, [query]);
+  const allergies = ["Peanuts", "Soy", "Shellfish", "Dairy", "Gluten", "Eggs"];
+
+  const toggleAllergy = (allergy) => {
+    setSelectedAllergies((prev) =>
+      prev.includes(allergy)
+        ? prev.filter((a) => a !== allergy)
+        : [...prev, allergy]
+    );
+  };
 
   return (
-    <div className="menu-placeholder">
-      <h2>Menus Page</h2>
-      <p>Navigation successful. Awaiting menu logic...</p>
-      <h1>I am the menu!</h1>
+    <div>
+      <h2>Menu for Restaurant ID: {restaurantId}</h2>
+
+      <h3>Allergy Filters:</h3>
+      {allergies.map((allergy) => (
+        <label key={allergy} style={{ marginRight: "10px" }}>
+          <input
+            type="checkbox"
+            value={allergy}
+            checked={selectedAllergies.includes(allergy)}
+            onChange={() => toggleAllergy(allergy)}
+          />
+          {allergy}
+        </label>
+      ))}
+
+      <h3>Menu Items:</h3>
+      <ul>
+        <li>Pizza</li>
+        <li>Pasta</li>
+        <li>Salad</li>
+        <li>Soup</li>
+        <li>Sandwich</li>
+        <li>Steak</li>
+        <li>Fish</li>
+      </ul>
     </div>
   );
 }
 
-export default Menus;
+export default Menu;

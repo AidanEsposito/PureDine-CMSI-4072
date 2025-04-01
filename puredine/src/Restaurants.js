@@ -7,9 +7,9 @@ function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
 
-const getImageUrl = (photoReference, apiKey) => {
-  return `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${photoReference}`;
-};
+// const getImageUrl = (photoReference, apiKey) => {
+//   return `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${photoReference}`;
+// };
 
 function Restaurants() {
   const query = useQuery().get("query"); 
