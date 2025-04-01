@@ -1,0 +1,39 @@
+
+Evaluation and Feedback
+CMSI 4072 project ~ Spring 2023
+Evaluation for homework03
+====================================
+
+7-1  Fix comments for Euclid's Algorithm        4 out of 5 points
+7-2  Two conditions for bad comments            4 out of 4 points
+7-4  Apply offensive programming ex.3           5 out of 5 points
+7-5  Should you add error handling?             4 out of 4 points
+7-7  Top-down drive to market / assumptions     5 out of 5 points
+8-1  Implementation of IsRelativelyPrime        5 out of 5 points
+8-3  Which testing methods used in 8-1 [gimme]  5 out of 5 points
+8-5  Implementation of AreRelativelyPrime       4 out of 4 points
+8-9  Exhaustive is black/white/gray & why       4 out of 4 points
+8-11 Lincoln estimate / number bugs             5 out of 5 points
+8-12 Lincoln estimate no common bugs            4 out of 4 points
+
+Total possible score: 50 points
+============================================================================
+
+Your score: 49 out of 50 = 98% which is an A-plus
+
+Comments/feedback:
+
+problem 7-1, just taking out all the comments is not quite what the problem
+   is asking for.  Rather, taking out the *extraneous* comments and replacing
+   them with one reference to "Euclid's GCD" in Wikipedia would be better.
+
+problem 7-4, "temper tantrums" ~ LOLZ  Never heard THAT one before! Thx.
+
+problem 7-7, very detailed narrative paragraph!  You could have done this by
+   using a bullet list, but the story approace is a nice change of pace.
+
+problem 8-9, you make a good case for exhaustive testing to be white box; I
+   think most people would say black box, but I can follow your justification
+   so, good job!
+
+Great work, Aidan!  You earned 98% of 11 points for 10.78 extra credit points.
