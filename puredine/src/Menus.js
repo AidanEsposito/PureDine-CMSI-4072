@@ -8,7 +8,7 @@ function useQuery() {
 
 function Menu() {
   const query = useQuery();
-  const restaurantId = query.get("restaurantId"); 
+  const restaurantId = query.get("restaurantId");
   const [selectedAllergies, setSelectedAllergies] = useState([]);
 
   const allergies = ["Peanuts", "Soy", "Shellfish", "Dairy", "Gluten", "Eggs"];
@@ -22,24 +22,13 @@ function Menu() {
   };
 
   return (
-    <div>
-      <h2>Menu for Restaurant ID: {restaurantId}</h2>
+    <div className="menu-container">
 
-      <h3>Allergy Filters:</h3>
-      {allergies.map((allergy) => (
-        <label key={allergy} style={{ marginRight: "10px" }}>
-          <input
-            type="checkbox"
-            value={allergy}
-            checked={selectedAllergies.includes(allergy)}
-            onChange={() => toggleAllergy(allergy)}
-          />
-          {allergy}
-        </label>
-      ))}
+
+      <h2>Menu for Restaurant: {restaurantId}</h2>
 
       <h3>Menu Items:</h3>
-      <ul>
+      <ul className="menu-items">
         <li>Pizza</li>
         <li>Pasta</li>
         <li>Salad</li>
@@ -47,7 +36,24 @@ function Menu() {
         <li>Sandwich</li>
         <li>Steak</li>
         <li>Fish</li>
+        <li>Grilled Salmon</li>
       </ul>
+
+      <h3>Allergy Filters:</h3>
+      <div className="allergy-filters">
+        {allergies.map((allergy) => (
+          <label key={allergy}>
+            <input
+              type="checkbox"
+              value={allergy}
+              checked={selectedAllergies.includes(allergy)}
+              onChange={() => toggleAllergy(allergy)}
+            />
+            {allergy}
+          </label>
+        ))}
+      </div>
+
     </div>
   );
 }

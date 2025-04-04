@@ -10,6 +10,7 @@ app.use(express.json());
 
 const apiRestaurantKey = process.env.GOOGLE_PLACES_API_KEY;
 const apiHealthKey = process.env.EDAMAM_API_KEY;
+const apiHealthId = process.env.EDAMAM_APP_ID;
 
 
 console.log('Google API Key:', apiRestaurantKey); 
@@ -79,7 +80,31 @@ let fetch;
         }
     });
 
-    
+    app.post('api/analyze-menu', async (req, res) => {
+        const {items} = req.body;
+        
+        if (!items || !Array.isArray(items)) {
+            return res.status(400).json({ error: 'Invalid input data' });
+        }
+
+        try{
+            const results = [];
+
+            for (const items of items){
+                const url = `https://api.edamam.com/api/nutrition-data?app_id=${apiHealthId}&app_key=${apiHealthKey}&ingr=${encodeURIComponent(item)}`;
+                const response = await fetch(url);
+                const data = await response.json();
+
+                results.push({ item, data });
+            }
+            res.json(results);
+
+        } catch (error) {
+            console.error('Error fetching data:', error.message);
+            res.status(500).json({ error: 'Failed to fetch data' });
+        }
+    });
+        
     const PORT = 5000;
     app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 })();
