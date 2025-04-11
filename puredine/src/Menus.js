@@ -1,19 +1,60 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Menus.css";
-import { useLocation } from "react-router-dom";
 
-function useQuery() {
-  return new URLSearchParams(useLocation().search);
-}
+const menuItems = [
+  "Cheese Pizza",
+  "Chicken Nuggets",
+  "Shrimp Scampi",
+  "Peanut Butter Sandwich",
+  "Veggie Burger",
+  "Caesar Salad",
+  "Mushroom Soup",
+  "Tofu Stir Fry",
+  "Egg Salad",
+  "Fish Tacos",
+  "Breadsticks",
+  "Chocolate Cake",
+];
 
-function Menu() {
-  const query = useQuery();
-  const restaurantId = query.get("restaurantId");
+
+const allergyOptions = [
+  "Dairy",
+  "Gluten",
+  "Peanuts",
+  "Shellfish",
+  "Soy",
+  "Eggs",
+  "Tree Nuts",
+  "Fish",
+];
+
+const allergyKeywords = {
+  Dairy: ["dairy", "milk", "cheese", "butter", "cream", "yogurt"],
+  Gluten: ["gluten", "wheat", "barley", "rye", "malt"],
+  Peanuts: ["peanut", "peanuts", "groundnut"],
+  Shellfish: ["shrimp", "lobster", "crab", "shellfish"],
+  Soy: ["soy", "soya", "soybean"],
+  Eggs: ["egg", "eggs", "albumin"],
+  "Tree Nuts": [
+    "almond",
+    "cashew",
+    "walnut",
+    "pecan",
+    "hazelnut",
+    "macadamia",
+    "tree nut",
+  ],
+  Fish: ["fish", "salmon", "tuna", "cod", "trout", "anchovy"],
+};
+
+const Menus = () => {
+  
   const [selectedAllergies, setSelectedAllergies] = useState([]);
+  const [analysisResults, setAnalysisResults] = useState({});
 
-  const allergies = ["Peanuts", "Soy", "Shellfish", "Dairy", "Gluten", "Eggs"];
-
-  const toggleAllergy = (allergy) => {
+  
+  const handleAllergyChange = (e) => {
+    const allergy = e.target.value;
     setSelectedAllergies((prev) =>
       prev.includes(allergy)
         ? prev.filter((a) => a !== allergy)
@@ -21,41 +62,82 @@ function Menu() {
     );
   };
 
+  
+  useEffect(() => {
+    if (selectedAllergies.length === 0) {
+      setAnalysisResults({});
+      return;
+    }
+
+    const analyzeMenu = () => {
+      const analyzed = {};
+
+      menuItems.forEach((item) => {
+        let status = "safe"; // Default status is safe
+        const itemLower = item.toLowerCase();
+
+        
+        selectedAllergies.forEach((allergy) => {
+          const keywords = allergyKeywords[allergy];
+          const allergyLower = allergy.toLowerCase();
+
+          
+          const hasAllergen = keywords.some((keyword) =>
+            itemLower.includes(keyword)
+          );
+          if (hasAllergen) {
+            status = "danger"; // If allergen found in item name, mark as "danger"
+          } else if (itemLower.includes(allergyLower)) {
+            status = "caution"; // If keyword found in item name, mark as "caution"
+          }
+        });
+
+        analyzed[item] = status;
+      });
+
+      setAnalysisResults(analyzed);
+    };
+
+    analyzeMenu();
+  }, [selectedAllergies]); 
+
   return (
-    <div className="menu-container">
+    <div className="menus-container">
+      <h2>Menus</h2>
 
-
-      <h2>Menu for Restaurant: {restaurantId}</h2>
-
-      <h3>Menu Items:</h3>
-      <ul className="menu-items">
-        <li>Pizza</li>
-        <li>Pasta</li>
-        <li>Salad</li>
-        <li>Soup</li>
-        <li>Sandwich</li>
-        <li>Steak</li>
-        <li>Fish</li>
-        <li>Grilled Salmon</li>
-      </ul>
-
-      <h3>Allergy Filters:</h3>
-      <div className="allergy-filters">
-        {allergies.map((allergy) => (
+      <div className="allergy-checkboxes">
+        <h3>Select Allergies:</h3>
+        {allergyOptions.map((allergy) => (
           <label key={allergy}>
             <input
               type="checkbox"
               value={allergy}
               checked={selectedAllergies.includes(allergy)}
-              onChange={() => toggleAllergy(allergy)}
+              onChange={handleAllergyChange}
             />
             {allergy}
           </label>
         ))}
       </div>
 
+      <ul className="menu-list">
+        {menuItems.map((item) => {
+          const status = analysisResults[item] || "safe";
+          return (
+            <li key={item} className={status}>
+              {item} —{" "}
+              {status === "danger"
+                ? "⚠️ Dangerous"
+                : status === "caution"
+                ? "⚠️ Caution"
+                : "✅ Safe"}
+            </li>
+          );
+        })}
+      </ul>
+      <h5>Note: Do not fully rely on all estimations made by PureDine, website is still in development.</h5>
     </div>
   );
-}
+};
 
-export default Menu;
+export default Menus;

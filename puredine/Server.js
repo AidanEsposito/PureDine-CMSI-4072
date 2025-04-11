@@ -80,7 +80,7 @@ let fetch;
         }
     });
 
-    app.post('api/analyze-menu', async (req, res) => {
+    app.post('/api/analyze-menu', async (req, res) => {
         const {items} = req.body;
         
         if (!items || !Array.isArray(items)) {
@@ -90,7 +90,7 @@ let fetch;
         try{
             const results = [];
 
-            for (const items of items){
+            for (const item of items){
                 const url = `https://api.edamam.com/api/nutrition-data?app_id=${apiHealthId}&app_key=${apiHealthKey}&ingr=${encodeURIComponent(item)}`;
                 const response = await fetch(url);
                 const data = await response.json();
