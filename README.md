@@ -32,7 +32,7 @@ This will provide a link to clone in either HTTPS or SSH that will copy to your 
 
 * npm install express cors node-fetch
 
-* 5. __The repository should be able to be opened in any application that opens files such as VStudio code, Sublime Text, or even general text files to edit or modify code.__
+5. __The repository should be able to be opened in any application that opens files such as VStudio code, Sublime Text, or even general text files to edit or modify code.__
 
 6. __To view the website portion of PureDine, simply run the following command to open a window on your prefered browser:__
 
