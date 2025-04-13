@@ -95,4 +95,17 @@ body {
     gap: 10px;
     text-align: center;
   }
+
+  .user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .profile-pic {
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
 }

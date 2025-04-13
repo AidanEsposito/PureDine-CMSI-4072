@@ -1,5 +1,7 @@
 import { initializeApp } from "firebase/app"
-import { getAuth } from "firebase/auth"
+import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "firebase/auth";
+import { useState, useEffect } from "react";
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyCNbt9dkXaOzAbc5-h2HFaTXseKGmfvGvg",
@@ -13,3 +15,25 @@ const firebaseConfig = {
 
 export const app = initializeApp(firebaseConfig)
 export const auth = getAuth(app)
+
+
+export function signIn() {
+  return signInWithPopup(auth, new GoogleAuthProvider());
+}
+
+export function logOut() {
+  return signOut(auth);
+}
+
+export function useAuthentication() {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUser(user || null);
+    });
+    return () => unsubscribe();
+  }, []);
+
+  return user;
+}

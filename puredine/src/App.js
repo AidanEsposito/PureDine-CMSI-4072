@@ -1,30 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
 import Restaurants from './Restaurants.js';
 import Menus from './Menus.js';
 import About from './About.js';
 import puredinelogo from './Images/puredinelogo.png';
 import './App.css';
-import { signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth"
-import { auth } from "./firebaseConfig.js"
+import { signIn, logOut, useAuthentication } from './firebaseConfig.js';
 
-// export function signIn(){
-//   return signInWithPopup(auth, new GoogleAuthProvider())
-// }
 
-// export function logOut(){
-//   return signOut(auth)
-// }
-
-// export function useAuthentication() {
-//   const [user, setUser] = useState(null)
-//   useEffect(() => {
-//     return auth.onAuthStateChanged((user) => {
-//       user ? setUser(user) : setUser(null)
-//     })
-//   }, [])
-//   return user
-// }
 
 function Home() {
   const [searchInput, setSearchInput] = useState('');
@@ -54,6 +37,7 @@ function Home() {
 }
 
 function Layout() {
+  const user = useAuthentication();
   return (
     <div className="App">
       <header className="header">
@@ -70,7 +54,21 @@ function Layout() {
           <ul>
             <li><a href="/">Home</a></li>
             <li><a href="/about">About</a></li>
-            <li><button className="login-button">Login</button></li>
+            <li>
+              {user ? (
+                <div className="user-info">
+                  {/* <img 
+                    src={user.photoURL} 
+                    alt="Profile" 
+                    className="profile-pic" 
+                  /> */}
+                  {/* <li><a href="/about">Profile</a></li> */}
+                  <button className="login-button" onClick={logOut}>Sign Out</button>
+                </div>
+              ) : (
+                <button className="login-button" onClick={signIn}>Login</button>
+              )}
+            </li>
           </ul>
         </nav>
       </header>
