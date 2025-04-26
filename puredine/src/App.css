@@ -97,15 +97,15 @@ body {
   }
 
   .user-info {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 
-  .profile-pic {
-    width: 2px;
-    height: 2px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
+.profile-pic {
+  width: px;       
+  height: 40px;
+  border-radius: 50%;
+}
+
 }

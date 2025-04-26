@@ -47,6 +47,40 @@ const allergyKeywords = {
   Fish: ["fish", "salmon", "tuna", "cod", "trout", "anchovy"],
 };
 
+const preprocessMenuItem = (item) => {
+  let updatedItem = item;
+
+  //Currently, this function only adds the allergen type to the item name. Will be more dynamic in future iterations.
+
+  if (item.toLowerCase().includes("pizza") || item.toLowerCase().includes("bread") || item.toLowerCase().includes("cake")) {
+    updatedItem += " (wheat)";
+  }
+  if (item.toLowerCase().includes("cheese") || item.toLowerCase().includes("cream")) {
+    updatedItem += " (dairy)";
+  }
+  if (item.toLowerCase().includes("peanut")) {
+    updatedItem += " (peanuts)";
+  }
+  if (item.toLowerCase().includes("shrimp") || item.toLowerCase().includes("scampi")) {
+    updatedItem += " (shellfish)";
+  }
+  if (item.toLowerCase().includes("tofu")) {
+    updatedItem += " (soy)";
+  }
+  if (item.toLowerCase().includes("egg")) {
+    updatedItem += " (eggs)";
+  }
+  if (item.toLowerCase().includes("fish")) {
+    updatedItem += " (fish)";
+  }
+  if (item.toLowerCase().includes("nut") || item.toLowerCase().includes("almond")) {
+    updatedItem += " (tree nuts)";
+  }
+
+  return updatedItem;
+};
+
+
 const Menus = () => {
   
   const [selectedAllergies, setSelectedAllergies] = useState([]);
@@ -74,8 +108,7 @@ const Menus = () => {
 
       menuItems.forEach((item) => {
         let status = "safe"; // Default status is safe
-        const itemLower = item.toLowerCase();
-
+        const processedItem = preprocessMenuItem(item).toLowerCase();
         
         selectedAllergies.forEach((allergy) => {
           const keywords = allergyKeywords[allergy];
@@ -83,11 +116,11 @@ const Menus = () => {
 
           
           const hasAllergen = keywords.some((keyword) =>
-            itemLower.includes(keyword)
+            processedItem.includes(keyword)
           );
           if (hasAllergen) {
             status = "danger"; // If allergen found in item name, mark as "danger"
-          } else if (itemLower.includes(allergyLower)) {
+          } else if (processedItem.includes(allergyLower)) {
             status = "caution"; // If keyword found in item name, mark as "caution"
           }
         });

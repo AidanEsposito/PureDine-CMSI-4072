@@ -55,19 +55,18 @@ function Layout() {
             <li><a href="/">Home</a></li>
             <li><a href="/about">About</a></li>
             <li>
-              {user ? (
-                <div className="user-info">
-                  {/* <img 
-                    src={user.photoURL} 
-                    alt="Profile" 
-                    className="profile-pic" 
-                  /> */}
-                  {/* <li><a href="/about">Profile</a></li> */}
-                  <button className="login-button" onClick={logOut}>Sign Out</button>
-                </div>
-              ) : (
-                <button className="login-button" onClick={signIn}>Login</button>
-              )}
+            {user ? (
+              <div className="user-info">
+                {/* <img 
+                  src={user.photoURL || 'https://ui-avatars.com/api/?name=User&background=random'} 
+                  alt="Profile" 
+                  className="profile-pic" 
+                /> */}
+                <button className="login-button" onClick={logOut}>Sign Out</button>
+              </div>
+            ) : (
+              <button className="login-button" onClick={signIn}>Login</button>
+            )}
             </li>
           </ul>
         </nav>
