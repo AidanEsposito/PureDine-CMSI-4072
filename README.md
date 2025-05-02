@@ -4,7 +4,7 @@
 
 To use PureDine as a basic user, you can visit the website provided at the link below:
 
-(link)
+[(link)](https://puredine-13017.web.app/)
 
 To install PureDine manually based on this Github repository, you must follow these steps:
 
