@@ -11,6 +11,8 @@ function useQuery() {
 //   return `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${photoReference}`;
 // };
 
+
+//Function to fetch restaurant data based on the search query
 function Restaurants() {
   const query = useQuery().get("query"); 
   const navigate = useNavigate();
@@ -40,6 +42,8 @@ function Restaurants() {
 
 
   //Photos available?
+
+  //Rendering the restaurant list
   return (
     <div className="restaurant-list" onClick={() => window.location.href = '/menus'}>
       <h2>Search Results for "{query}"</h2>

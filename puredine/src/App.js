@@ -9,16 +9,20 @@ import { signIn, logOut, useAuthentication } from './firebaseConfig.js';
 
 
 
+// Home component for the landing page
 function Home() {
   const [searchInput, setSearchInput] = useState('');
   const navigate = useNavigate();
 
+
+  // Function to handle search input and navigate to the restaurants page
   const handleSearch = () => {
     if (searchInput.trim()) {
       navigate(`/restaurants?query=${encodeURIComponent(searchInput)}`);
     }
   };
 
+  // Function to handle Enter key press for search
   return (
     <main>
       <input
@@ -36,6 +40,7 @@ function Home() {
   );
 }
 
+// Layout component for the header and routing
 function Layout() {
   const user = useAuthentication();
   return (
@@ -82,6 +87,7 @@ function Layout() {
   );
 }
 
+// Main App component that wraps the Layout with BrowserRouter
 function App() {
   return (
     <BrowserRouter>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Menus.css";
 
+// Sample menu items and allergy options
 const menuItems = [
   "Cheese Pizza",
   "Chicken Nuggets",
@@ -47,6 +48,7 @@ const allergyKeywords = {
   Fish: ["fish", "salmon", "tuna", "cod", "trout", "anchovy"],
 };
 
+// Function to preprocess menu items and add allergen types
 const preprocessMenuItem = (item) => {
   let updatedItem = item;
 
@@ -81,6 +83,7 @@ const preprocessMenuItem = (item) => {
 };
 
 
+// Menus component to display menu items and allergy analysis
 const Menus = () => {
   
   const [selectedAllergies, setSelectedAllergies] = useState([]);
@@ -133,6 +136,7 @@ const Menus = () => {
 
     analyzeMenu();
   }, [selectedAllergies]); 
+
 
   return (
     <div className="menus-container">

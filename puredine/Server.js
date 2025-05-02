@@ -13,8 +13,6 @@ const apiHealthKey = process.env.EDAMAM_API_KEY;
 const apiHealthId = process.env.EDAMAM_APP_ID;
 
 
-console.log('Google API Key:', apiRestaurantKey); 
-console.log('Edamam API Key:', apiHealthKey);
 
 let fetch;
 
@@ -22,7 +20,7 @@ let fetch;
 (async () => {
     fetch = (await import('node-fetch')).default;
 
-   
+   //Pull in the Google Places API key from the environment variable
     app.get('/api/restaurants', async (req, res) => {
         const query = req.query.query || 'restaurant';
         const location = req.query.location || '34.0522,-118.2437'; // Default to LA
@@ -80,6 +78,7 @@ let fetch;
         }
     });
 
+    //Pull in the Edamam API key from the environment variable
     app.post('/api/analyze-menu', async (req, res) => {
         const {items} = req.body;
         

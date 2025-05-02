@@ -2,8 +2,10 @@ import { useNavigate } from 'react-router-dom';
 import './About.css';
 import Aidan from './Images/Aidan.jpeg';
 
+// About component that provides information about the project and its creator
 function About() {
 
+    // This component provides navigation to the home page and displays information about the project and its creator.
     const navigate = useNavigate();
 
     return (
